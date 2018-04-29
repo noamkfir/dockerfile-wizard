@@ -122,3 +122,4 @@ RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-
   && rm -rf /tmp/google-chrome-stable_current_amd64.deb \
   && sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox --no-sandbox|g' \
        \"/opt/google/chrome/google-chrome\""
+fi
