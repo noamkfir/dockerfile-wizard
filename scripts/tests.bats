@@ -93,11 +93,3 @@
 
   google-chrome --version
 }
-
-@test "chromedriver" {
-  if [ $BROWSERS != "true" ] ; then
-    skip "no browser tools installed"
-  fi
-
-  chromedriver --version
-}

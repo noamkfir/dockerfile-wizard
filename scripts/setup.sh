@@ -127,15 +127,15 @@ case "$DOCKERIZE" in
 esac
 
 read -r -p "
-Does your project need web browsers for browser testing? Enter the word 'yes' to install browsers/tools (Xvfb, PhantomJS, Firefox, Chrome, Chromedriver) or hit enter to skip
+Does your project need web browsers for browser testing? Enter the word 'yes' to install browsers/tools (Xvfb, PhantomJS, Firefox, Chrome) or hit enter to skip
 : " BROWSERS
 
 case "$BROWSERS" in
   yes)
-    perl -i -pe 's/# browser tools \(Xvfb, PhantomJS, Firefox, Chrome, Chromedriver\): true, false/true/' .circleci/config.yml
+    perl -i -pe 's/# browser tools \(Xvfb, PhantomJS, Firefox, Chrome\): true, false/true/' .circleci/config.yml
     ;;
   *)
-    perl -i -pe 's/# browser tools \(Xvfb, PhantomJS, Firefox, Chrome, Chromedriver\): true, false/false/' .circleci/config.yml
+    perl -i -pe 's/# browser tools \(Xvfb, PhantomJS, Firefox, Chrome\): true, false/false/' .circleci/config.yml
     perl -i -pe "s/- run: # phantomjs/# - run: # phantomjs/" .circleci/config.yml
     perl -i -pe "s/name: verify phantomjs/# name: verify phantomjs/" .circleci/config.yml
     perl -i -pe "s/command: Xvfb/# command: Xvfb/" .circleci/config.yml
@@ -143,7 +143,6 @@ case "$BROWSERS" in
     perl -i -pe "s/- run: phantomjs/# - run: phantomjs/" .circleci/config.yml
     perl -i -pe "s/- run: firefox/# - run: firefox/" .circleci/config.yml
     perl -i -pe "s/- run: google-chrome/# - run: google-chrome/" .circleci/config.yml
-    perl -i -pe "s/- run: chromedriver/# - run: chromedriver/" .circleci/config.yml
     ;;
 esac
 
